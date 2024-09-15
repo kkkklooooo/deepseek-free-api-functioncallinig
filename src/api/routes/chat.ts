@@ -21,10 +21,7 @@ export default {
             const token = _.sample(tokens);
             let { model, messages, stream,tools } = request.body;
             tools={content:JSON.stringify(tools)}
-            messages={
-                tools,
-                ...messages
-            }
+            messages.push(tools)
             if(['deepseek_chat', 'deepseek_code', 'deepseek-chat*', 'deepseek-chat', 'deepseek-coder'].includes(model))
                 model = {
                     'deepseek-chat*': 'deepseek_chat',
