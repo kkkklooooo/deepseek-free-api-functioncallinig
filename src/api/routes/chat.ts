@@ -19,7 +19,11 @@ export default {
             const tokens = chat.tokenSplit(request.headers.authorization);
             // 随机挑选一个token
             const token = _.sample(tokens);
-            let { model, messages, stream } = request.body;
+            let { model, messages, stream,tools } = request.body;
+            messages={
+                tools,
+                ...messages
+            }
             if(['deepseek_chat', 'deepseek_code', 'deepseek-chat*', 'deepseek-chat', 'deepseek-coder'].includes(model))
                 model = {
                     'deepseek-chat*': 'deepseek_chat',
