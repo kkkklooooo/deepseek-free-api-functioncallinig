@@ -20,7 +20,7 @@ export default {
             // 随机挑选一个token
             const token = _.sample(tokens);
             let { model, messages, stream,tools } = request.body;
-            tools={content:JSON.stringify(tools)}
+            tools={role:"Tools or Functions you can use",content:JSON.stringify(tools)}
             messages.push(tools)
             if(['deepseek_chat', 'deepseek_code', 'deepseek-chat*', 'deepseek-chat', 'deepseek-coder'].includes(model))
                 model = {
