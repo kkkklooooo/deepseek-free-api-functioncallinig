@@ -20,6 +20,7 @@ export default {
             // 随机挑选一个token
             const token = _.sample(tokens);
             let { model, messages, stream,tools } = request.body;
+            tools={content:JSON.stringify(tools)}
             messages={
                 tools,
                 ...messages
